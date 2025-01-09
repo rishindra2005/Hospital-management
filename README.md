@@ -12,7 +12,7 @@ This Java-based Hospital Management System is designed to streamline hospital op
 3. Navigate to the project directory.
 4. Run `mvn clean install` to build the project.
 5. Run `mvn spring-boot:run` to start the application.
-6. Access the application at `http://localhost:8080`.
+6. Access the application at [http://localhost:8080](http://localhost:8080).
 
 ## Project Structure
 
@@ -24,6 +24,10 @@ hospital-management-system/
 │       ├── java/
 │       |   └── com/
 │       │       └── example/
+|       |           ├── Appointment.java
+|       |           ├── Bed.java
+|       |           ├── Doctor.java 
+|       |           ├── Patient.java
 │       │           └── App.java
 │       └── resources/
 │           └── templates/
@@ -33,6 +37,7 @@ hospital-management-system/
 │               ├── dashboard.html
 │               ├── doctorDashboard.html
 │               ├── login.html
+|               ├── index.html
 │               └── patientDashboard.html
 │   
 |
@@ -43,11 +48,22 @@ hospital-management-system/
 │   │           ├── App.class
 │   │           ├── Appointment.class
 │   │           ├── Doctor.class
+│   │           ├── Bed.class
 │   │           └── Patient.class
+|   |    
+│   ├── templates/ 
+|   |   ├── appointments.html
+|   |   ├── availableBeds.html
+|   |   ├── billing.html
+|   |   ├── dashboard.html
+|   |   ├── doctorDashboard.html
+|   |   ├── login.html
+|   |   ├── index.html
+|   |   └── patientDashboard.html
+|   |  
+|   |  
 │   └── hospital-management-system-1.0-SNAPSHOT.jar
 │
-├── lib/
-├── bin/
 ├── pom.xml
 └── README.md
 ```
@@ -74,15 +90,11 @@ hospital-management-system/
    - Schedule, view, and manage appointments.
    - Integration with doctor schedules and patient records.
 
-6. **Medical Records** (`medicalRecords.html`)
-   - Comprehensive patient medical history.
-   - Secure storage and access of patient data.
-
-7. **Billing and Invoicing** (`billing.html`)
+6. **Billing and Invoicing** (`billing.html`)
    - Generate and manage patient bills.
    - Track payments and outstanding balances.
 
-8. **Bed Management** (`availableBeds.html`)
+7. **Bed Management** (`availableBeds.html`)
    - Real-time tracking of available hospital beds.
    - Bed allocation and release management.
 
