@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Bed Management</title>
+</head>
+<body>
+    <h1>Bed Management</h1>
+
+    <h2>Book a Bed</h2>
+    <form action="/bookBed" method="post">
+        <label for="patientIndex">Patient:</label>
+        <select name="patientIndex" id="patientIndex">
+            <option th:each="patient,iterStat : ${patients}" 
+                    th:value="${iterStat.index}" 
+                    th:text="${patient.name}"></option>
+        </select>
+        <label for="bedNumber">Bed Number:</label>
+        <select name="bedNumber" id="bedNumber">
+            <option th:each="bed : ${beds}" 
+                    th:value="${bed.bedNumber}" 
+                    th:text="${bed.bedNumber}"></option>
+        </select>
+        <label for="date">Date:</label>
+        <input type="date" name="date" id="date" required>
+        <input type="submit" value="Book Bed">
+    </form>
+
+    <h2>Check Available Beds</h2>
+    <form action="/beds" method="get">
+        <label for="checkDate">Date:</label>
+        <input type="date" name="date" id="checkDate" required>
+        <input type="submit" value="Check Available Beds">
+    </form>
+
+    <div th:if="${beds != null and selectedDate != null}">
+        <h3>Bed Status for <span th:text="${selectedDate}"></span></h3>
+        <table>
+            <tr>
+                <th>Bed Number</th>
+                <th>Status</th>
+                <th>Patient</th>
+            </tr>
+            <tr th:each="bed : ${beds}">
+                <td th:text="${bed.bedNumber}"></td>
+                <td th:text="${bed.occupied and bed.occupiedDate == selectedDate ? 'Occupied' : 'Available'}"></td>
+                <td th:text="${bed.occupied and bed.occupiedDate == selectedDate ? bed.patient.name : '-'}"></td>
+            </tr>
+        </table>
+    </div>
+
+    <a href="/">Back to Home</a>
+</body>
+</html>
+

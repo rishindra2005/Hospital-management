@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Billing</title>
+</head>
+<body>
+    <h1>Billing</h1>
+
+    <form action="/generateBill" method="post">
+        <label for="patientIndex">Select Patient:</label>
+        <select name="patientIndex" id="patientIndex">
+            <option th:each="patient, iterStat : ${patients}" 
+                    th:value="${iterStat.index}"
+                    th:text="${patient.name + ' - Bill Status: ' + (patient.hasPaidBill() ? 'Paid' : 'Unpaid')}"></option>
+        </select>
+        <button type="submit">Generate Bill</button>
+    </form>
+
+    <form action="/clearBill" method="post">
+        <label for="clearPatientIndex">Clear Bill for Patient:</label>
+        <select name="patientIndex" id="clearPatientIndex">
+            <option th:each="patient, iterStat : ${patients}" 
+                    th:value="${iterStat.index}"
+                    th:text="${patient.name}"
+                    th:disabled="${patient.hasPaidBill()}"></option>
+        </select>
+        <button type="submit">Clear Bill</button>
+    </form>
+
+    <div th:if="${message}" th:text="${message}" style="color: green;"></div>
+    <div th:if="${error}" th:text="${error}" style="color: red;"></div>
+    <a href="/">Back to Home</a>
+</body>
+</html>

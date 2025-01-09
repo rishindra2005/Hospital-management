@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Available Beds</title>
+</head>
+<body>
+    <h1>Available Beds for <span th:text="${date}"></span></h1>
+    
+    <table>
+        <tr>
+            <th>Bed Number</th>
+        </tr>
+        <tr th:each="bed : ${availableBeds}">
+            <td th:text="${bed.bedNumber}"></td>
+        </tr>
+    </table>
+
+    <a href="/beds">Back to Bed Management</a>
+    <a href="/">Back to Home</a>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Bill Details</title>
+</head>
+<body>
+    <h1>Bill Details</h1>
+    <p>Patient: <span th:text="${patient.name}"></span></p>
+    <p>Number of Appointments: <span th:text="${appointmentCount}"></span></p>
+    <p>Days of Stay: <span th:text="${patient.daysOfStay}"></span></p>
+    <p>Total Bill: $<span th:text="${patient.totalBill}"></span></p>
+    <p>Bill Status: <span th:text="${patient.hasPaidBill() ? 'Paid' : 'Unpaid'}"></span></p>
+    <a href="/billing">Back to Billing</a>
+    <a href="/">Back to Home</a>
+</body>
+</html>
+
