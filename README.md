@@ -7,6 +7,7 @@ Welcome to the Hospital Management System project. This Java-based application i
 This project is a Hospital Management System developed using Java and Spring Boot. It provides functionalities for managing hospital operations, including patient records, doctor schedules, appointments, and billing.
 
 ## File Structure
+```
 hospital-management-system/
 │
 ├── src/
@@ -49,7 +50,7 @@ hospital-management-system/
 │
 ├── pom.xml
 └── README.md
-
+```
 ## Functionalities
 
 1. **Login System**: Secure authentication for admins, doctors, and patients.
