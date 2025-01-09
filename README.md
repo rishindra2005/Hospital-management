@@ -109,9 +109,9 @@ hospital-management-system/
 
 This project is developed using Visual Studio Code. The workspace contains two folders by default:
 - `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+- `pom.xml`: the folder to maintain dependencies
 
-Meanwhile, the compiled output files are generated in the `bin` folder by default.
+Meanwhile, the compiled output files are generated in the `target` folder by default.
 
 ## Author
 
