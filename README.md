@@ -1,69 +1,11 @@
-# Hospital Management System
 
-Welcome to the Hospital Management System project. This Java-based application is designed to streamline hospital operations and improve patient care management.
+# Hospital Management System
 
 ## Project Overview
 
-This project is a Hospital Management System developed using Java and Spring Boot. It provides functionalities for managing hospital operations, including patient records, doctor schedules, appointments, and billing.
-
-## File Structure
-```
-hospital-management-system/
-│
-├── src/
-│   └── main/
-│       ├── java/
-│       │   └── com/
-│       │       └── example/
-│       │           ├── controller/
-│       │           │   ├── AdminController.java
-│       │           │   ├── DoctorController.java
-│       │           │   └── PatientController.java
-│       │           ├── model/
-│       │           │   ├── User.java
-│       │           │   ├── Doctor.java
-│       │           │   └── Patient.java
-│       │           ├── repository/
-│       │           │   ├── UserRepository.java
-│       │           │   ├── DoctorRepository.java
-│       │           │   └── PatientRepository.java
-│       │           └── service/
-│       │               ├── UserService.java
-│       │               ├── DoctorService.java
-│       │               └── PatientService.java
-│       └── resources/
-│           ├── application.properties
-│           └── templates/
-│               ├── admin/
-│               │   ├── dashboard.html
-│               │   └── manage-users.html
-│               ├── doctor/
-│               │   ├── dashboard.html
-│               │   └── patient-list.html
-│               └── patient/
-│                   ├── dashboard.html
-│                   └── appointments.html
-│
-├── target/
-│   ├── classes/
-│   └── generated-sources/
-│
-├── pom.xml
-└── README.md
-```
-## Functionalities
-
-1. **Login System**: Secure authentication for admins, doctors, and patients.
-2. **Admin Dashboard**: Manage doctors and patients, generate reports.
-3. **Doctor Dashboard**: View assigned patients, update records, schedule appointments.
-4. **Patient Dashboard**: View medical records, schedule appointments, view prescriptions.
-5. **Appointment Management**: Create, edit, and cancel appointments.
-6. **Medical Records**: Store and retrieve patient medical histories.
-7. **Billing and Invoicing**: Generate bills and process payments.
+This Java-based Hospital Management System is designed to streamline hospital operations and improve patient care management. It provides functionalities for managing hospital operations, including patient records, doctor schedules, appointments, and billing.
 
 ## Getting Started
-
-To run this project locally:
 
 1. Ensure you have Java and Maven installed on your system.
 2. Clone this repository.
@@ -72,30 +14,92 @@ To run this project locally:
 5. Run `mvn spring-boot:run` to start the application.
 6. Access the application at `http://localhost:8080`.
 
+## Project Structure
+
+```
+hospital-management-system/
+│
+├── src/
+│   ├── main/
+│       ├── java/
+│       |   └── com/
+│       │       └── example/
+│       │           └── App.java
+│       └── resources/
+│           └── templates/
+│               ├── appointments.html
+│               ├── availableBeds.html
+│               ├── billing.html
+│               ├── dashboard.html
+│               ├── doctorDashboard.html
+│               ├── login.html
+│               └── patientDashboard.html
+│   
+|
+├── target/
+│   ├── classes/
+│   │   └── com/
+│   │       └── example/
+│   │           ├── App.class
+│   │           ├── Appointment.class
+│   │           ├── Doctor.class
+│   │           └── Patient.class
+│   └── hospital-management-system-1.0-SNAPSHOT.jar
+│
+├── lib/
+├── bin/
+├── pom.xml
+└── README.md
+```
+
+## Key Functionalities
+
+1. **Login System** (`login.html`)
+   - Secure authentication for administrators, doctors, and patients.
+
+2. **Admin Dashboard** (`dashboard.html`)
+   - Overview of hospital statistics and management options.
+   - Access to all system functionalities.
+
+3. **Doctor Dashboard** (`doctorDashboard.html`)
+   - View and manage appointments.
+   - Access and update patient medical records.
+
+4. **Patient Dashboard** (`patientDashboard.html`)
+   - View personal medical history.
+   - Schedule new appointments.
+   - Access billing information.
+
+5. **Appointment Management** (`appointments.html`)
+   - Schedule, view, and manage appointments.
+   - Integration with doctor schedules and patient records.
+
+6. **Medical Records** (`medicalRecords.html`)
+   - Comprehensive patient medical history.
+   - Secure storage and access of patient data.
+
+7. **Billing and Invoicing** (`billing.html`)
+   - Generate and manage patient bills.
+   - Track payments and outstanding balances.
+
+8. **Bed Management** (`availableBeds.html`)
+   - Real-time tracking of available hospital beds.
+   - Bed allocation and release management.
+
 ## Dependencies
 
-Main dependencies include:
 - Spring Boot Starter Web
 - Spring Boot Starter Thymeleaf
 - Spring Boot Starter Parent
 - Spring Boot Maven Plugin
 
-For a full list of dependencies, refer to the `pom.xml` file.
-
 ## Development Environment
 
-This project is developed using Visual Studio Code. The workspace contains two main folders:
+This project is developed using Visual Studio Code. The workspace contains two folders by default:
+- `src`: the folder to maintain sources
+- `lib`: the folder to maintain dependencies
 
-- `src`: for maintaining sources
-- `lib`: for maintaining dependencies
-
-Compiled output files are generated in the `bin` folder by default.
-
-To customize the folder structure, modify the `.vscode/settings.json` file.
-
-## Dependency Management
-
-Use the `JAVA PROJECTS` view in VS Code to manage dependencies. For more information, visit [VS Code Java Dependency Management](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+Meanwhile, the compiled output files are generated in the `bin` folder by default.
 
 ## Author
 
@@ -103,4 +107,16 @@ Risheendra
 
 ## License
 
-This project is licensed under the Apache License, Version 2.0.
+Copyright 2023 Risheendra
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
