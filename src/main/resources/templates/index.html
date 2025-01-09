@@ -3,6 +3,24 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <title>Hospital Management System</title>
+    <style>
+        .shutdown-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #ff4444;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
 </head>
 <body>
     <h1>Hospital Management System</h1>
@@ -19,6 +37,10 @@
             <li><a href="/logout">Logout</a></li>
         </ul>
     </nav>
+    <form action="/shutdown" method="get">
+        <button type="submit" class="shutdown-btn" onclick="return confirm('Are you sure you want to shut down the application?');" title="Shutdown Application">⏻</button>
+    </form>
+
 </body>
 </html>
 

@@ -16,10 +16,16 @@ import java.util.stream.Collectors;
 import javax.servlet.http.HttpSession;
 
 import java.time.LocalDate;
+import java.io.IOException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.context.ConfigurableApplicationContext;
 
 @SpringBootApplication
 @Controller
 public class App {
+    private static ConfigurableApplicationContext context;
+    private static final Logger logger = LoggerFactory.getLogger(App.class);
     private static List<Patient> patients = new ArrayList<>();
     private static List<Doctor> doctors = new ArrayList<>();
     private static List<Appointment> appointments = new ArrayList<>();
@@ -40,8 +46,43 @@ public class App {
         for (int i = 1; i <= 15; i++) {
             beds.add(new Bed(i));
         }
-        SpringApplication.run(App.class, args);
+
+        // Start the Spring application
+        context = SpringApplication.run(App.class, args);
+
+        // Open the default browser
+        openBrowser("http://localhost:8080");
     }
+
+    private static void openBrowser(String url) {
+        String os = System.getProperty("os.name").toLowerCase();
+        Runtime rt = Runtime.getRuntime();
+        try {
+            if (os.contains("win")) {
+                // Windows
+                rt.exec("rundll32 url.dll,FileProtocolHandler " + url);
+            } else if (os.contains("mac")) {
+                // macOS
+                rt.exec("open " + url);
+            } else if (os.contains("nix") || os.contains("nux")) {
+                // Linux
+                String[] browsers = { "google-chrome", "firefox", "mozilla", "epiphany", "konqueror",
+                        "netscape", "opera", "links", "lynx" };
+
+                StringBuilder cmd = new StringBuilder();
+                for (int i = 0; i < browsers.length; i++)
+                    cmd.append(i == 0 ? "" : " || ").append(browsers[i]).append(" \"").append(url).append("\" ");
+                rt.exec(new String[] { "sh", "-c", cmd.toString() });
+            } else {
+                logger.info("Please open {} manually.", url);
+            }
+        } catch (IOException e) {
+            logger.error("Error opening browser: {}", e.getMessage());
+        }
+    }
+
+
+
 
     @GetMapping("/billing")
     public String billing(Model model) {
@@ -226,4 +267,18 @@ public String clearBill(@RequestParam int patientIndex, Model model) {
         model.addAttribute("date", date);
         return "availableBeds";
     }
+
+    @GetMapping("/shutdown")
+    public String shutdown() {
+        new Thread(() -> {
+            try {
+                Thread.sleep(1000);
+                context.close();
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+        }).start();
+        return "redirect:/";
+    }
 }
+

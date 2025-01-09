@@ -12,7 +12,7 @@ This Java-based Hospital Management System is designed to streamline hospital op
 3. Navigate to the project directory.
 4. Run `mvn clean install` to build the project.
 5. Run `mvn spring-boot:run` to start the application.
-6. Access the application at [http://localhost:8080](http://localhost:8080).
+6. The application will automatically open in your default web browser at `http://localhost:8080`.
 
 ## Project Structure
 
@@ -98,21 +98,37 @@ hospital-management-system/
    - Real-time tracking of available hospital beds.
    - Bed allocation and release management.
 
+8. **Application Shutdown** (accessible from `index.html`)
+   - Convenient shutdown feature accessible from the main dashboard.
+   - Shutdown button represented by a power symbol (⏻) in the bottom right corner.
+   - Confirmation prompt before shutting down the application.
+   - Allows for graceful termination of the application for all users.
 ## Dependencies
 
 - Spring Boot Starter Web
 - Spring Boot Starter Thymeleaf
 - Spring Boot Starter Parent
 - Spring Boot Maven Plugin
+- java.io.IOException (Java Standard Library)
+- org.slf4j.Logger (SLF4J API)
+- org.slf4j.LoggerFactory (SLF4J API)
 
 ## Development Environment
 
 This project is developed using Visual Studio Code. The workspace contains two folders by default:
 - `src`: the folder to maintain sources
 - `pom.xml`: the folder to maintain dependencies
+- `src/main/resources/application.properties`: the file to configure application settings change `server.port=9090` to change port number
+
+   
 
 Meanwhile, the compiled output files are generated in the `target` folder by default.
 
+The project uses SLF4J (Simple Logging Facade for Java) for logging purposes. The `Logger` and `LoggerFactory` classes from the `org.slf4j` package are used to create and manage loggers throughout the application.
+
+The `java.io.IOException` class is used for handling I/O related exceptions, which may occur during file operations or network communications within the application.
+
+Meanwhile, the compiled output files are generated in the `target` folder by default.
 ## Author
 
 Risheendra

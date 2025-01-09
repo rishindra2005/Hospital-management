@@ -66,6 +66,3 @@ spring-boot-starter.log
 ehthumbs.db
 Thumbs.db
 
-# Application-specific
-application.properties
-application.yml
